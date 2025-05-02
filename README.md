@@ -16,11 +16,10 @@ This project is a backend service built with Django REST Framework that provides
 - Django
 - Django REST Framework
 - SQLite (default, can be configured to PostgreSQL/MySQL)
-- Docker (optional)
 
 ## Setup Instructions
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/your-username/url-shortener-api.git
-   cd url-shortener-api
+   git clone https://github.com/Sajid8686/sajid-innovexal-hussain.git
+   cd url_shortener_service
