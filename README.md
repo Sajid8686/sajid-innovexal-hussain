@@ -1,23 +1,27 @@
-# URL Shortening Service API
+# URL Shortener API - Innovaxel Take Home Assignment
 
-This project is a backend service built with Django REST Framework that provides URL shortening functionality, similar to services like Bitly or TinyURL.
+A RESTful API to shorten long URLs, built using Django and Django REST Framework.
 
-## Features
+## 🌐 Features
 
-- Create short URLs from long URLs
-- Redirect short URLs to original links
-- Track basic analytics (e.g., number of redirects)
-- RESTful API design
-- Scalable and easily extendable
+- 🔗 Create short URLs
+- 📥 Retrieve original URLs via short code
+- ✏️ Update original URLs
+- ❌ Delete short URLs
+- 📊 Track and view access statistics
 
-## Tech Stack
+---
 
-- Python 3.x
-- Django
+## ⚙️ Tech Stack
+
+- Python 3.10+
+- Django 4.x
 - Django REST Framework
-- SQLite (default, can be configured to PostgreSQL/MySQL)
+- SQLite (default)
 
-## Setup Instructions
+---
+
+## 🚀 Getting Started
 
 1. **Clone the repository**  
    ```bash
