@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'url_service_app' # Custom app for URL shortening service
+    'url_service_app', # Custom app for URL shortening service
     'rest_framework', # Django REST framework for API development
 ]
 
