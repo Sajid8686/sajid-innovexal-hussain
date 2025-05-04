@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'url_service_app' # Custom app for URL shortening service
+    'url_service_app', # Custom app for URL shortening service
     'rest_framework', # Django REST framework for API development
+    'drf_yasg', # For API documentation
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,15 @@ WSGI_APPLICATION = 'url_shortening_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'url_shortening',
+        'USER': 'root',
+        'PASSWORD': 'Sajid@8686',  
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
