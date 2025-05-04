@@ -1,39 +1,24 @@
-from rest_framework import status, generics
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
 from .models import ShortURL
 from .serializers import ShortURLSerializer
-from django.shortcuts import get_object_or_404
 
-class CreateShortURL(generics.CreateAPIView):
+class ShortURLViewSet(viewsets.ModelViewSet):
     queryset = ShortURL.objects.all()
     serializer_class = ShortURLSerializer
+    lookup_field = 'short_code'
 
-class RetrieveShortURL(APIView):
-    def get(self, request, short_code):
-        short_url = get_object_or_404(ShortURL, short_code=short_code)
+    def retrieve(self, request, short_code=None):
+        short_url = self.get_object()
         short_url.access_count += 1
         short_url.save()
-        serializer = ShortURLSerializer(short_url)
+        serializer = self.get_serializer(short_url)
         return Response(serializer.data)
 
-class UpdateShortURL(APIView):
-    def put(self, request, short_code):
-        short_url = get_object_or_404(ShortURL, short_code=short_code)
-        serializer = ShortURLSerializer(short_url, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-class DeleteShortURL(APIView):
-    def delete(self, request, short_code):
-        short_url = get_object_or_404(ShortURL, short_code=short_code)
-        short_url.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class URLStats(APIView):
-    def get(self, request, short_code):
-        short_url = get_object_or_404(ShortURL, short_code=short_code)
-        serializer = ShortURLSerializer(short_url)
+    @action(detail=True, methods=['get'], url_path='stats')
+    def stats(self, request, short_code=None):
+        short_url = self.get_object()
+        serializer = self.get_serializer(short_url)
         return Response(serializer.data)

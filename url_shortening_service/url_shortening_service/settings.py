@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'url_service_app', # Custom app for URL shortening service
     'rest_framework', # Django REST framework for API development
+    'drf_yasg', # For API documentation
 ]
 
 MIDDLEWARE = [
